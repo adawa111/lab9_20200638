@@ -49,11 +49,13 @@
 <script>
     function agregarPregunta(contador) {
         var divPreguntasAdicionales = document.getElementById('preguntas-adicionales');
+        divPreguntasAdicionales.classList.add('ml-5');
         for (let i = 1; i <= contador; i++) {
             var divPregunta = document.createElement('div');
             var nombrediv = 'div'+i;
             divPregunta.setAttribute('id',nombrediv);
-            divPregunta.classList.add('col-md-4', 'mb-3');
+            divPregunta.classList.add('col-md-12', 'mb-3');
+            divPregunta.style.backgroundColor = 'green';
 
             var img = document.createElement('img');
             img.src ='resources/static/robot.png';
