@@ -2,9 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HOLAAA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
+    <h1>
+        Juego de personajes movedizos
+    </h1>
+    <div >
+        <label>Ingrese el número de personajes</label>
+        <input id="personajes" name="personajes">
+        <br />
+        <br />
+        <label>Ingrese el tamaño de la pista (m)</label>
+        <input id="pista" name="pista">
+        <br />
+        <br />
+        <input onclick=" validarFormulario()" class="btn btn-primary" value="Ingresar Personajes" style="text-align: center;background: #2F96B4;
+                    border-radius: 15px; border-color: #FFFFFF; width: 120px" >
+    </div>
+    <div onclick="validarFormulario1()">
+        <div class="row">
+            <div id="preguntas-adicionales"></div>
 
-</body>
+            <br>
+        </div>
+    </div>
+
+    </body>
+<script>
+    function cambiarColor1(contador) {
+        var colorPicker1 = document.getElementById("colorPicker1");
+        var nombrediv1 = 'div'+contador;
+        var div1 = document.getElementById("change1");
+        var color1 = colorPicker1.value;
+        div1.style.backgroundColor = color1;
+    }
+</script>
+<script>
+    function agregarPregunta(contador) {
+        var divPreguntasAdicionales = document.getElementById('preguntas-adicionales');
+        for (let i = 1; i <= contador; i++) {
+            var divPregunta = document.createElement('div');
+            var nombrediv = 'div'+i;
+            divPregunta.setAttribute('id',nombrediv);
+            divPregunta.classList.add('col-md-4', 'mb-3');
+
+            var img = document.createElement('img');
+            img.src ='resources/static/robot.png';
+            divPregunta.appendChild(img);
+
+            var rowdiv = document.createElement('row');
+
+            var cuadroizq = document.createElement('div');
+            cuadroizq.classList.add('col-md-3', 'mb-3');
+            var input1 =document.createElement('input');
+            input1.setAttribute('type', 'color');
+            input1.setAttribute('id','colorPicker1');
+            var cambiarrr = 'cambiarColor1('+i+')'
+            input1.setAttribute('onchange',cambiarrr);
+            cuadroizq.appendChild(input1);
+            rowdiv.appendChild(cuadroizq);
+
+
+
+            var input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            input.setAttribute('id', 'nombre' + i);
+            input.setAttribute('name', 'nombre'+i);
+            input.classList.add('form-control');
+
+            var seleccionar = document.createElement('button');
+            seleccionar.innerHTML = 'SELECCIONAR PERSONAJE';
+
+
+
+            rowdiv.appendChild(input);
+            divPregunta.appendChild(rowdiv);
+            divPreguntasAdicionales.appendChild(divPregunta);
+        }
+        var input3 = document.createElement('input');
+        input3.setAttribute('value', 'Iniciar juego');
+        input3.setAttribute('type', 'submit');
+
+        divPreguntasAdicionales.appendChild(input3);
+    }
+    function validarFormulario(contador){
+        var personajes =document.getElementById("personajes").value;
+        var pista = document.getElementById("pista").value;
+        if (personajes =="" || pista ==""){
+            return false;
+        }
+        var a = 0;
+        if(!(personajes<=5 & personajes>=3)){
+            a = a+1;
+        }
+        if(!(pista<=8 & pista>=4)){
+            a = a+1;
+        }
+        if(!a==0){
+            alert("Ha ingresado mal los datos");
+            return false;
+        }
+        if (a==0){
+            agregarPregunta(personajes);
+        }
+    }
+    function validarFormulario1(){
+        var personajes =document.getElementById("personajes").value;
+        var pista = document.getElementById("pista").value;
+        if (personajes =="" || pista ==""){
+            return false;
+        }
+        var a = 0;
+        if(!(nombres==5 & personajes>=3)){
+            a = a+1;
+        }
+        if(!(pista<=8 & pista>=4)){
+            a = a+1;
+        }
+        if(!a==0){
+            alert("Ha ingresado mal los datos");
+            return false;
+        }
+        if (a==0){
+            agregarPregunta(personajes);
+        }
+    }
+</script>
 </html>
